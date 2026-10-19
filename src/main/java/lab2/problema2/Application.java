@@ -51,10 +51,12 @@ public class Application {
 
         //b2)
         System.out.println("\nIntegralisti descrescator dupa medie: ");
-        Collections.sort(integralisti, new ComparatorDescrescatorMedie());
+        Collections.sort(integralisti, new ComparatorMedie().reversed());
         integralisti.forEach(System.out::println);
 
-        System.out.println("\nRestantieri: ");
+        //b3)
+        System.out.println("\nRestantieri dupa numar restante: ");
+        Collections.sort(restantieri, new ComparatorNrRestante());
         restantieri.forEach(System.out::println);
     }
 

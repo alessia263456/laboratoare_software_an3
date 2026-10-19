@@ -46,6 +46,16 @@ public class Student {
         return true;
     }
 
+    public Integer numarRestante() {
+        int ct=0;
+        for(Integer i:note)
+        {
+            if(i<5)
+                ct++;
+        }
+        return ct;
+    }
+
     @Override
     public String toString() {
 
