@@ -48,6 +48,7 @@ public class Student {
 
     @Override
     public String toString() {
+
         return nume+" "+prenume+", grupa "+grupa+", note: "+note;
     }
 }

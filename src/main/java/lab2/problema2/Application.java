@@ -1,8 +1,10 @@
 package lab2.problema2;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Random;
+import java.util.stream.IntStream;
 
 public class Application {
     void addNoteRandom(Student student){
@@ -19,7 +21,38 @@ public class Application {
         studenti.add(new Student("Badea", "Ion", "225_1"));
         studenti.add(new Student("Cacoveanu", "Andreea", "225_1"));
         studenti.add(new Student("Onofrei", "Mircea", "225_1"));
-        System.out.println(studenti.get(0));
+
+        Random rand = new Random();
+
+        for(Student s:studenti)
+        {
+            IntStream.range(0,5).forEach(i->s.adaugaNota(rand.nextInt(7)+4));
+        }
+
+        System.out.println("Studenti:");
+        studenti.forEach(System.out::println);
+
+        Collections.sort(studenti, new ComparatorAlfabeticPeGrupe());
+        System.out.println("\nStudenti sortati alfabetic, pe grupe:");
+        studenti.forEach(System.out::println);
+
+        //b)
+        List<Student> integralisti=new ArrayList<>();
+        List<Student> restantieri=new ArrayList<>();
+
+        for(Student s:studenti)
+        {
+            if(s.esteIntegralist())
+                integralisti.add(s);
+            else
+                restantieri.add(s);
+        }
+
+        System.out.println("\nIntegralisti: ");
+        integralisti.forEach(System.out::println);
+
+        System.out.println("\nRestantieri: ");
+        restantieri.forEach(System.out::println);
     }
 
 }

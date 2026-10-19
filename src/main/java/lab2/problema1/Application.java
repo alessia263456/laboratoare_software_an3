@@ -43,7 +43,7 @@ public class Application {
 
         //d)
         xPlusYLimitedByP=xPlusY.stream()
-                .filter(i -> i<=p)
+                .filter(i -> i <= p)
                 .toList();
         System.out.println("p="+p);
         System.out.println("xPlusYLimitedByP: "+xPlusYLimitedByP);
