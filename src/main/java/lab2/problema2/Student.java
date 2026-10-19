@@ -32,8 +32,8 @@ public class Student {
         note.add(nota);
     }
 
-    public Integer medie() {
-        int suma=0;
+    public Double medie() {
+        double suma=0;
         for(Integer i:note)
             suma+=i;
         return suma/note.size();
@@ -49,6 +49,6 @@ public class Student {
     @Override
     public String toString() {
 
-        return nume+" "+prenume+", grupa "+grupa+", note: "+note;
+        return nume+" "+prenume+", grupa "+grupa+", note: "+note +", medie: "+this.medie();
     }
 }

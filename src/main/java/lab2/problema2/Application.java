@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Random;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class Application {
@@ -32,23 +33,25 @@ public class Application {
         System.out.println("Studenti:");
         studenti.forEach(System.out::println);
 
+        //b1)
         Collections.sort(studenti, new ComparatorAlfabeticPeGrupe());
         System.out.println("\nStudenti sortati alfabetic, pe grupe:");
         studenti.forEach(System.out::println);
 
-        //b)
+
         List<Student> integralisti=new ArrayList<>();
         List<Student> restantieri=new ArrayList<>();
 
-        for(Student s:studenti)
-        {
-            if(s.esteIntegralist())
-                integralisti.add(s);
-            else
-                restantieri.add(s);
-        }
+        integralisti=studenti.stream()
+                .filter(s -> s.esteIntegralist())
+                .collect(Collectors.toList());
 
-        System.out.println("\nIntegralisti: ");
+        restantieri.addAll(studenti);
+        restantieri.removeAll(integralisti);
+
+        //b2)
+        System.out.println("\nIntegralisti descrescator dupa medie: ");
+        Collections.sort(integralisti, new ComparatorDescrescatorMedie());
         integralisti.forEach(System.out::println);
 
         System.out.println("\nRestantieri: ");
