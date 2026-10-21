@@ -21,6 +21,12 @@ public class CounterServlet extends HttpServlet {
         if (increment != null) {
             counterGet ++;
         }
+
+        String decrement = request.getParameter("dec");
+        if (decrement != null) {
+            counterGet --;
+        }
+
         request.getSession().setAttribute("CounterGetName", counterGet);
         status(request, response);
     }
@@ -34,8 +40,19 @@ public class CounterServlet extends HttpServlet {
         }
         String increment = request.getParameter("inc");
         if (increment != null) {
-            counterPost ++;
+            int v = Integer.parseInt(increment);
+            if(v != 0)
+                counterPost += v;
         }
+
+        String decrement = request.getParameter("dec");
+        if (decrement != null) {
+            int v = Integer.parseInt(decrement);
+            if(v != 0)
+                counterPost -= v;
+        }
+
+
         request.getSession().setAttribute("CounterPostName", counterPost);
         status(request, response);
     }
