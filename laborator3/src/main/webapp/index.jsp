@@ -13,8 +13,9 @@
 <form action="CounterServlet" method="POST">
     <br>inc: <input type="text" name="inc" value="1">
     <br>dec: <input type="text" name="dec" value="0">
-    <br>
+    <br> <br>
     <input type="submit" value="CounterServlet POST with value">
+    <br> <br>
     <input type="submit" formmethod="GET" value="CounterServlet GET with value">
 </form>
 </body>

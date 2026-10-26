@@ -35,6 +35,11 @@ public class CounterServlet extends HttpServlet {
             }
         }
 
+        if(counterGet==0)
+            request.getSession().setAttribute("WarningGet",true);
+        else
+            request.getSession().setAttribute("WarningGet",false);
+
         request.getSession().setAttribute("CounterGetName", counterGet);
         status(request, response);
     }
@@ -64,6 +69,11 @@ public class CounterServlet extends HttpServlet {
             }
         }
 
+        if(counterPost==0)
+            request.getSession().setAttribute("WarningPost",true);
+        else
+            request.getSession().setAttribute("WarningPost",false);
+
 
         request.getSession().setAttribute("CounterPostName", counterPost);
         status(request, response);
@@ -74,12 +84,26 @@ public class CounterServlet extends HttpServlet {
         response.setContentType("text/html");
         PrintWriter printWriter = response.getWriter();
         printWriter.println("<h2>Welcome to Counter Servlet</h2>");
+
         Integer counterGet = (Integer)
                 request.getSession().getAttribute("CounterGetName");
         printWriter.println("<br> Counter for GET: " + counterGet);
+
         Integer counterPost = (Integer)
                 request.getSession().getAttribute("CounterPostName");
         printWriter.println("<br> Counter for POST: " + counterPost);
+
+        Boolean warningGet = (Boolean)
+                request.getSession().getAttribute("WarningGet");
+        if(warningGet!=null && warningGet==true){
+            printWriter.println("<br><span style='color: red'>WARNING GET");
+        }
+
+        Boolean warningPost = (Boolean)
+                request.getSession().getAttribute("WarningPost");
+        if(warningPost!=null && warningPost==true) {
+            printWriter.println("<br><span style='color: red'>WARNING POST");
+        }
     }
 
 }
